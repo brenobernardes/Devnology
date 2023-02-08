@@ -46,3 +46,24 @@ db.connect((err)  => {
             if (err) throw err;
     })
 })
+
+app.use(express.json());
+app.use(cors());
+
+app.post("/register" , (req, res) => {
+    const title = req.body.title;
+    const url = req.body.url;
+    const description = req.body.description;
+
+    let saveData = "INSERT INTO url (title, url, description) VALUES (? ? ?)";
+
+    db.query(saveData, [title, url, description], (err, result) => {
+        if (err) res.send(err);
+        res.send(result);
+        console.log("Sending data")
+    })
+})
+
+app.listen(3001, () => {
+    console.log("server rodando")
+});
