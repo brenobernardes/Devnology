@@ -27,8 +27,6 @@ db.connect((err)  => {
         console.log("Connected to database");
     }
 
-    
-
     // Create new database if needed
     db.query(`CREATE DATABASE IF NOT EXISTS ${databaseName}`, function (err) {
         if (err) throw err;
@@ -37,8 +35,6 @@ db.connect((err)  => {
     db.query(`USE ${databaseName}`, (err) => {
         if(err) throw err;
     })
-
-    
 
     db.query(`CREATE TABLE IF NOT EXISTS ${databaseTable} (
         id INT AUTO_INCREMENT PRIMARY KEY, 
@@ -87,6 +83,16 @@ app.delete("/delete/:id", (req, res) => {
     const deleteData = `DELETE FROM ${databaseTable} WHERE id = ?`;
 
     db.query(deleteData, id, (err, result) => {
+        if (err) res.send(err);
+        res.send(result);
+    })
+})
+
+// Returning data from database
+app.get("/return", (req, res) => {
+    const returnData = `SELECT * FROM ${databaseTable}`;
+
+    db.query(returnData, (err, result) => {
         if (err) res.send(err);
         res.send(result);
     })
