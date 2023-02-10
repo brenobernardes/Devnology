@@ -50,17 +50,28 @@ db.connect((err)  => {
 app.use(express.json());
 app.use(cors());
 
+// Saving data on database
 app.post("/register" , (req, res) => {
     const title = req.body.title;
     const url = req.body.url;
     const description = req.body.description;
 
-    let saveData = "INSERT INTO url (title, url, description) VALUES (? ? ?)";
+    let saveData = "INSERT INTO url (title, url, description) VALUES (?, ?, ?)";
 
     db.query(saveData, [title, url, description], (err, result) => {
         if (err) res.send(err);
         res.send(result);
-        console.log("Sending data")
+    })
+})
+
+// Deleting data from database
+app.delete("/delete/:id", (req, res) => {
+    const id = req.params.id;
+    const deleteData = "DELETE FROM url WHERE id = ?";
+
+    db.query(deleteData, id, (err, result) => {
+        if (err) res.send(err);
+        res.send(result);
     })
 })
 
