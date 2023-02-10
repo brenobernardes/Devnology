@@ -3,6 +3,8 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyled = createGlobalStyle`
     :root {
         --background: #063;
+        --table-background: #FAFAFA;
+        --black: #000;
     }
 
     * {
