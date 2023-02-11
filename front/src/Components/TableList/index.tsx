@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Container } from "./styles";
 import Table from "react-bootstrap/Table";
+import { TableListProps } from "../../Interface/TableListProps";
 
-/*
-    interface tableList {
-    title: string,
-    url: string,
-    description: string
-}
-*/
+export function TableList () {    
 
-export function TableList () {
-    const [list, setList] = useState([{
+    const itemsList: TableListProps [] = [{
         title: "",
         url: "",
         description: ""
-    }]);
+    }];
+
+    const [list, setList] = useState(itemsList);
 
     useEffect(() => {
         axios.get("http://localhost:3001/return")
