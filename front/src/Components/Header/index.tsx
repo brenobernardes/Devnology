@@ -1,13 +1,17 @@
 import React from "react";
-import { Container,Content } from "./styles";
+import { Container, Content } from "./styles";
 
-export function Header () {
+interface HeaderProps {
+    onOpenModal: () => void;
+}
+
+export function Header ({ onOpenModal }: HeaderProps) {
     return (
         <Container>
             <Content>
                 <h1>Gerenciador de Links</h1>
 
-                <button>
+                <button type="button" onClick={onOpenModal}>
                     Salvar Link
                 </button>
             </Content>

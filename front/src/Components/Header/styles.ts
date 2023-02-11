@@ -17,9 +17,10 @@ export const Content = styled.div`
     max-width: 1120px;
     margin: 0 auto;
     padding: 2rem 1rem 2rem;
+    background: var(--background);
 
     h1 {
-
+        background: var(--background);
     }
 
     button {
