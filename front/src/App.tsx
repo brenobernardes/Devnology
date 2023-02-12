@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GlobalStyled } from './styles/global';
 import { Header } from './Components/Header/index';
 import { NewRegisterModal } from './Components/Modal';
@@ -19,7 +19,7 @@ function App() {
     <>
       <GlobalStyled />
       <Header onOpenModal={handleOpenModal} />
-      <TableList />
+      <TableList onOpenModal={handleOpenModal}/>
       <NewRegisterModal
         isOpen={isModalOpen}
         onRequestClose={handleCloseModal}
