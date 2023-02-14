@@ -19,7 +19,7 @@ function App() {
     <>
       <GlobalStyled />
       <Header onOpenModal={handleOpenModal} />
-      <TableList onOpenModal={handleOpenModal}/>
+      <TableList/>
       <NewRegisterModal
         isOpen={isModalOpen}
         onRequestClose={handleCloseModal}
