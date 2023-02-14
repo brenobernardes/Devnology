@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { useState } from 'react';
+import axios from "axios";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -7,13 +9,25 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export function FormDialog(props:any) {
+  const [data, setData] = useState({
+    id: "",
+    title: "",
+    url: "",
+    description: ""
+  });
 
-  
   const handleClose = () => {
     props.setOpen(false);
   };
 
-  //const [open, setOpen] = React.useState(false);
+  const handleUpdateData = () => {
+    axios.put("http://localhost:3001/edit", {
+      id: data.id,
+      title: data.title,
+      url: data.url,
+      description: data.description
+    })
+  }
 
   return (
     <div>
@@ -62,8 +76,8 @@ export function FormDialog(props:any) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Salvar</Button>
-          <Button variant="outlined" onClick={handleClose}>Cancelar</Button>
+          <Button variant="outlined" onClick={handleUpdateData}>Salvar</Button>
+          <Button  onClick={handleClose}>Cancelar</Button>
         </DialogActions>
       </Dialog>
     </div>

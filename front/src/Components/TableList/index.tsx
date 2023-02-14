@@ -31,18 +31,7 @@ export function TableList (props:any) {
     }
 
     return (
-        <>
-            <FormDialog 
-                open={open} 
-                setOpen={setOpen}
-                id={props.id}
-                title={props.title}
-                url={props.url}
-                description={props.description}
-                list={props.list}
-                setList={props.setOpen}
-            />
-            
+        <>           
             <Container>
                 <Table striped bordered hover>
                     <thead>
@@ -73,6 +62,7 @@ export function TableList (props:any) {
                                         <EditIcon 
                                             type="button"
                                             onClick={() => {
+                                                // console.log(props.id)
                                                 handleClickDialogOpen();
                                             }}
                                         />
@@ -82,6 +72,16 @@ export function TableList (props:any) {
                                         />
                                     </td>
                                 </tr>
+                                <FormDialog 
+                                    open={open} 
+                                    setOpen={setOpen}
+                                    id={props.id}
+                                    title={props.title}
+                                    url={props.url}
+                                    description={props.description}
+                                    list={list}
+                                    setList={setList}
+                                />
                             </tbody>
                         )
                     })}
