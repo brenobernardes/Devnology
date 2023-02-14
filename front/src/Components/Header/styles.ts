@@ -24,6 +24,16 @@ export const Content = styled.div`
     }
 
     button {
+        width: 8rem;
+        height: 2rem;
+        border-radius: .5rem;
+        background-color: var(--grey);
+        color: var(--white);
+        transition: 0.2s;
 
+        &:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
     }
 `

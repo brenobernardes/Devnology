@@ -52,7 +52,7 @@ export function NewRegisterModal({ isOpen, onRequestClose }: newRegisterModalPro
             isOpen={isOpen}
             onRequestClose={onRequestClose}
         >
-            <Form >
+            <Form>
                 <h2>Salvar Link</h2>
 
                 <Form.Group>
