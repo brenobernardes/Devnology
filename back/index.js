@@ -51,9 +51,7 @@ app.use(cors());
 
 // Saving data on database
 app.post("/register" , (req, res) => {
-    const { title } = req.body;
-    const { url } = req.body;
-    const { description } = req.body;
+    const { title, url, description } = req.body;
 
     let saveData = `INSERT INTO ${databaseTable} (title, url, description) VALUES (?, ?, ?)`;
 
@@ -65,10 +63,7 @@ app.post("/register" , (req, res) => {
 
 // Updating data
 app.put("/edit", (req, res) => {
-    const { id } = req.body;
-    const { title } = req.body;
-    const { url } = req.body;
-    const { description } = req.body;
+    const { id, title, url, description } = req.body;
 
     let updateData = `UPDATE ${databaseTable} SET title = ?, url = ?, description = ? WHERE id = ?`;
     db.query(updateData, [title, url, description, id], (err, result) => {
@@ -93,6 +88,17 @@ app.get("/return", (req, res) => {
     const returnData = `SELECT * FROM ${databaseTable}`;
 
     db.query(returnData, (err, result) => {
+        if (err) res.send(err);
+        res.send(result);
+    })
+})
+
+//Searching data
+app.get("/search", (req, res) => {
+    const searchData = `SELECT * FROM ${databaseTable} WHERE id LIKE ? OR title LIKE ? OR url LIKE ? OR description LIKE ?`;
+    const { id, title, url, description } = req.body;
+
+    db.query(searchData, [`%${id}%`, `%${title}%`, `%${url}%`, `%${description}%`], (err, result) => {
         if (err) res.send(err);
         res.send(result);
     })
