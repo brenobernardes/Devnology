@@ -9,17 +9,20 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export function FormDialog(props:any) {
+  /*
   const [data, setData] = useState({
     id: "",
     title: "",
     url: "",
     description: ""
   });
+  */
 
   const handleClose = () => {
     props.setOpen(false);
   };
 
+  /*
   const handleUpdateData = () => {
     axios.put("http://localhost:3001/edit", {
       id: data.id,
@@ -28,6 +31,7 @@ export function FormDialog(props:any) {
       description: data.description
     })
   }
+  */
 
   return (
     <div>
@@ -76,7 +80,7 @@ export function FormDialog(props:any) {
           />
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" onClick={handleUpdateData}>Salvar</Button>
+          <Button variant="outlined" onClick={handleClose}>Salvar</Button>
           <Button  onClick={handleClose}>Cancelar</Button>
         </DialogActions>
       </Dialog>
