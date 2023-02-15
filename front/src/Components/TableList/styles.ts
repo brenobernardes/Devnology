@@ -12,4 +12,13 @@ export const Container = styled.div`
         width: 80vw;
         border: 1px solid var(--black);
     }
+
+    .actionButton {
+        background-color: transparent;
+    }
+
+    .actionButton:hover {
+        transition: 0.3s;
+        color: var(--red);
+    }
 `

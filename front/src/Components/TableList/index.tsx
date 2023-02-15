@@ -59,14 +59,16 @@ export function TableList (props:any) {
                                     <td>{props.url}</td>
                                     <td>{props.description}</td>
                                     <td>
-                                        <EditIcon 
+                                        <EditIcon
+                                            className="actionButton"
                                             type="button"
                                             onClick={() => {
                                                 // console.log(props.id)
                                                 handleClickDialogOpen();
                                             }}
                                         />
-                                        <DeleteIcon 
+                                        <DeleteIcon
+                                            className="actionButton"
                                             type="button" 
                                             onClick={handleDelete}
                                         />
